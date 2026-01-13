@@ -1,22 +1,14 @@
-# Ralph Flowchart
+# Ralph for Claude Code - Flowchart
 
-## Interactive Flowchart
+## Visual Flowchart
 
-**[View Interactive Flowchart](https://snarktank.github.io/ralph/)** - Click through to see each step with animations.
+The main README contains a **Mermaid diagram** that GitHub renders automatically.
 
-The original Ralph implementation includes an interactive React Flow visualization that explains how Ralph works. The Claude Code version follows the same conceptual flow.
+**[View Flowchart in README](../README.md#flowchart)**
 
-## Conceptual Equivalence
+## ASCII Flowchart
 
-The execution flow is **identical** between the Amp and Claude Code versions of Ralph. The only differences are in the specific CLI commands and file conventions used:
-
-| Step | Amp Version | Claude Code Version |
-|------|-------------|---------------------|
-| Invoke CLI | `amp --dangerously-allow-all` | `claude --dangerously-skip-permissions --print` |
-| Read patterns | `AGENTS.md` | `CLAUDE.md` |
-| Log thread | `$AMP_CURRENT_THREAD_ID` URL | `iterations/iteration-{N}.md` file |
-
-## Text Flowchart
+For terminal/text environments:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -126,7 +118,7 @@ Each iteration spawns a **completely new Claude Code instance**. There is no mem
 - `prd.json` (story status)
 - `iterations/` (conversation exports)
 
-### Memory Persistence
+### Memory Persistence Diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -147,20 +139,6 @@ Each iteration spawns a **completely new Claude Code instance**. There is no mem
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## Building the Original Flowchart Locally
+## Architecture Origin
 
-If you want to run the original interactive flowchart locally:
-
-```bash
-# Clone the original ralph repository
-git clone https://github.com/snarktank/ralph.git
-cd ralph/flowchart
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-The flowchart is built with React Flow and designed for presentations.
+This implements the [Ralph pattern](https://ghuntley.com/ralph/) by Geoffrey Huntley, ported to Claude Code from [snarktank/ralph](https://github.com/snarktank/ralph).

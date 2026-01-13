@@ -80,11 +80,44 @@ Ralph will:
 
 ## Flowchart
 
-The execution flow is conceptually identical to the original Ralph:
+```mermaid
+flowchart TD
+    START([Start]) --> VALIDATE[Check Prerequisites<br/>claude CLI, jq]
+    VALIDATE --> PRD_CHECK{prd.json<br/>valid?}
+    PRD_CHECK -->|No| ERROR([Exit with error])
+    PRD_CHECK -->|Yes| STORIES_CHECK{All stories<br/>pass?}
+    STORIES_CHECK -->|Yes| DONE([Exit - nothing to do])
+    STORIES_CHECK -->|No| LOOP_START
 
-**[View Interactive Flowchart](https://snarktank.github.io/ralph/)** - Click through to see each step with animations.
+    subgraph LOOP [" Iteration Loop "]
+        LOOP_START[Start Iteration N] --> SPAWN[Spawn fresh<br/>Claude Code instance]
+        SPAWN --> AGENT_WORK
 
-See `flowchart/README.md` for more details.
+        subgraph AGENT_WORK [" Claude Code Work "]
+            READ_PRD[Read prd.json] --> PICK[Pick highest priority<br/>failing story]
+            PICK --> IMPLEMENT[Implement story]
+            IMPLEMENT --> QUALITY[Run quality checks]
+            QUALITY --> COMMIT[Commit changes]
+            COMMIT --> UPDATE[Update prd.json<br/>passes: true]
+            UPDATE --> LOG[Log to progress.txt]
+        end
+
+        AGENT_WORK --> SAVE[Save output to<br/>iterations/]
+        SAVE --> COMPLETE_CHECK{COMPLETE<br/>signal?}
+    end
+
+    COMPLETE_CHECK -->|Yes| SUCCESS([Exit success])
+    COMPLETE_CHECK -->|No| MAX_CHECK{Max iterations<br/>reached?}
+    MAX_CHECK -->|No| LOOP_START
+    MAX_CHECK -->|Yes| INCOMPLETE([Exit - incomplete])
+
+    style LOOP fill:#f0f7ff,stroke:#3b82f6
+    style AGENT_WORK fill:#f0fdf4,stroke:#22c55e
+```
+
+**Key insight:** Each iteration spawns a **fresh Claude Code instance** with no memory. Context persists only through files (git, progress.txt, prd.json, iterations/).
+
+See `flowchart/README.md` for ASCII version and more details.
 
 ## Critical Concepts
 
