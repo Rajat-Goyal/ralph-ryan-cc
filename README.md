@@ -81,6 +81,8 @@ Ralph will:
 
 ## Flowchart
 
+[![Interactive Flowchart](interactive_worflow.png)](https://rajat-goyal.github.io/ralph-ryan-cc/)
+
 **[View Interactive Flowchart](https://rajat-goyal.github.io/ralph-ryan-cc/)** - Click through to see each step with animations.
 
 The `flowchart/` directory contains the source code. To run locally:
