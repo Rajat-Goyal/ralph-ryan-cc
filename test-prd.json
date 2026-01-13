@@ -1,0 +1,20 @@
+{
+  "project": "Ralph Test",
+  "featureName": "test-run",
+  "branchName": "ralph/test-run",
+  "description": "Test PRD to verify Ralph works correctly",
+  "userStories": [
+    {
+      "id": "TEST-001",
+      "title": "Create test file",
+      "description": "Create a simple test file to verify Ralph execution",
+      "acceptanceCriteria": [
+        "Create file `ralph-test-output.txt` with content 'Ralph works!'",
+        "File exists and contains expected content"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "Simple test to verify basic functionality"
+    }
+  ]
+}
