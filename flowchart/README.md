@@ -1,10 +1,33 @@
-# Ralph for Claude Code - Flowchart
+# Ralph for Claude Code - Interactive Flowchart
 
-## Visual Flowchart
+## Interactive Flowchart (React Flow)
 
-The main README contains a **Mermaid diagram** that GitHub renders automatically.
+This directory contains an interactive step-by-step flowchart built with [React Flow](https://reactflow.dev/). Click through each step to understand how Ralph works with Claude Code.
 
-**[View Flowchart in README](../README.md#flowchart)**
+### Running Locally
+
+```bash
+cd flowchart
+npm install
+npm run dev
+```
+
+Open http://localhost:5173/ralph-ryan-cc/ in your browser.
+
+### Building for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+The built files will be in `dist/` and can be deployed to GitHub Pages or any static hosting.
+
+## Mermaid Diagram
+
+The main README also contains a **Mermaid diagram** that GitHub renders automatically.
+
+**[View Mermaid Flowchart in README](../README.md#flowchart)**
 
 ## ASCII Flowchart
 

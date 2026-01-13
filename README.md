@@ -117,7 +117,7 @@ flowchart TD
 
 **Key insight:** Each iteration spawns a **fresh Claude Code instance** with no memory. Context persists only through files (git, progress.txt, prd.json, iterations/).
 
-See `flowchart/README.md` for ASCII version and more details.
+See `flowchart/` for an **interactive React Flow version** (run `npm run dev` in the flowchart directory) and ASCII version for terminals.
 
 ## Critical Concepts
 
